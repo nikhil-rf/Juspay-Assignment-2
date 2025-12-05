@@ -14,12 +14,9 @@ const App = () => {
   };
 
   const closeMenu = () => {
-    setIsMenuOpen(false);
-    setTimeout(() => {
-      setCurrentView("main");
-      setSelectedService(null);
-    }, 300);
+  setIsMenuOpen(false);
   };
+
 
   const navigateToSubmenu = (serviceId) => {
     setSelectedService(serviceId);
