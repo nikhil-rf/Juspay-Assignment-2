@@ -86,7 +86,7 @@ const App = () => {
               }
             }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed bottom-0 left-0 right-0 z-50 px-4"
+            className="fixed bottom-0 left-0 right-0 z-50 p-4"
           >
             <div className="bg-white rounded-3xl shadow-2xl w-full max-w-md mx-auto overflow-hidden">
               {/* Drag Handle */}
