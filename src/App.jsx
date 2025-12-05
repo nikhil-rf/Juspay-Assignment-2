@@ -90,9 +90,9 @@ const App = () => {
               }
             }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="fixed inset-x-0 bottom-0 z-50"
+            className="fixed bottom-0 left-0 right-0 z-50 px-4"
           >
-            <div className="bg-white rounded-t-3xl shadow-2xl max-w-md mx-auto overflow-hidden">
+            <div className="bg-white rounded-3xl shadow-2xl w-full max-w-md mx-auto overflow-hidden">
               {/* Drag Handle */}
               <div className="flex justify-center pt-3 pb-2">
                 <div className="w-12 h-1.5 bg-gray-300 rounded-full" />
