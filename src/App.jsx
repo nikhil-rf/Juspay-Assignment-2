@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import MenuCard from './components/MenuCard';
-import { ChevronLeft } from 'lucide-react';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import MenuCard from "./components/MenuCard";
+import { ChevronLeft } from "lucide-react";
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [currentView, setCurrentView] = useState('main');
+  const [currentView, setCurrentView] = useState("main");
   const [selectedService, setSelectedService] = useState(null);
   const [selectedSubService, setSelectedSubService] = useState(null);
 
@@ -16,27 +16,27 @@ const App = () => {
   const closeMenu = () => {
     setIsMenuOpen(false);
     setTimeout(() => {
-      setCurrentView('main');
+      setCurrentView("main");
       setSelectedService(null);
     }, 300);
   };
 
   const navigateToSubmenu = (serviceId) => {
     setSelectedService(serviceId);
-    setCurrentView('submenu');
+    setCurrentView("submenu");
   };
 
   const navigateToSubmenu2 = (subServiceId) => {
     setSelectedSubService(subServiceId);
-    setCurrentView('submenu2');
+    setCurrentView("submenu2");
   };
 
   const navigateBack = () => {
-    if (currentView === 'submenu2') {
-      setCurrentView('submenu');
+    if (currentView === "submenu2") {
+      setCurrentView("submenu");
       setSelectedSubService(null);
-    } else if (currentView === 'submenu') {
-      setCurrentView('main');
+    } else if (currentView === "submenu") {
+      setCurrentView("main");
       setSelectedService(null);
     } else {
       closeMenu();
@@ -45,7 +45,6 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-linear-to-br from-gray-100 to-gray-200 flex items-center justify-center p-4">
-      {/* Open Menu Button */}
       <AnimatePresence>
         {!isMenuOpen && (
           <motion.button
@@ -60,7 +59,6 @@ const App = () => {
         )}
       </AnimatePresence>
 
-      {/* closemenu */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -73,23 +71,21 @@ const App = () => {
         )}
       </AnimatePresence>
 
-      {/* Menu Container with Drag */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ y: '100%' }}
+            initial={{ y: "100%" }}
             animate={{ y: 0 }}
-            exit={{ y: '100%' }}
+            exit={{ y: "100%" }}
             drag="y"
             dragConstraints={{ top: 0, bottom: 0 }}
             dragElastic={{ top: 0, bottom: 0.5 }}
             onDragEnd={(e, { offset, velocity }) => {
-              // Close if dragged down more than 150px or fast swipe down
               if (offset.y > 150 || velocity.y > 500) {
                 closeMenu();
               }
             }}
-            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="fixed bottom-0 left-0 right-0 z-50 px-4"
           >
             <div className="bg-white rounded-3xl shadow-2xl w-full max-w-md mx-auto overflow-hidden">
@@ -109,9 +105,8 @@ const App = () => {
                 </button>
               </div>
 
-              {/* content */}
               <div className="relative overflow-hidden">
-                <MenuCard 
+                <MenuCard
                   currentView={currentView}
                   selectedService={selectedService}
                   selectedSubService={selectedSubService}
